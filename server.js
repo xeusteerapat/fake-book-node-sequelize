@@ -4,7 +4,7 @@ const db = require('./models');
 const app = express();
 
 db.sequelize
-  .sync()
+  .sync({ force: false })
   .then(() => {
     app.listen(5000, () => {
       console.log('Server listening on port 5000...');

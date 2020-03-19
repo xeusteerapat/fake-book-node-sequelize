@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   let post = sequelize.define('post', {
     text: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING(500)
     },
     picture: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING(500)
     },
     timeStamp: {
       type: DataTypes.DATE

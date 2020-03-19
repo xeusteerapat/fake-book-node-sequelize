@@ -4,13 +4,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(100)
     },
     username: {
-      type: DataTypes.STRING(100)
+      type: DataTypes.STRING(100),
+      unique: true
     },
     password: {
-      type: DataTypes.STRING(100)
+      type: DataTypes.STRING(200)
     },
     profileDisplay: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING(500)
     }
   });
 
@@ -18,14 +19,14 @@ module.exports = (sequelize, DataTypes) => {
     user.hasMany(models.post);
     user.hasMany(models.comment);
     user.belongsToMany(models.user, {
-      as: 'requestToId',
       through: models.friend,
-      foreignKey: 'requestFromId'
+      as: 'requestTo',
+      foreignKey: 'requestToId'
     });
     user.belongsToMany(models.user, {
-      as: 'requestFromId',
       through: models.friend,
-      foreignKey: 'requestToId'
+      as: 'requestFrom',
+      foreignKey: 'requestFromId'
     });
   };
 

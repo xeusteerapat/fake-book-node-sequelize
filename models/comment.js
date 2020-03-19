@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   let comment = sequelize.define('comment', {
     message: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING(200)
     }
   });
 
